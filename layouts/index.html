@@ -1,0 +1,16 @@
+{{/* ABOUTME: Homepage template — reverse-chronological feed of post titles and dates */}}
+{{/* ABOUTME: Titles only, no excerpts. Trust the writing to earn the click. */}}
+
+{{ define "main" }}
+<section class="post-list">
+  {{ $posts := where .Site.RegularPages "Section" "posts" }}
+  {{ range $posts.ByDate.Reverse }}
+  <article class="post-entry">
+    <a href="{{ .Permalink }}">
+      <span class="post-title">{{ .Title }}</span>
+      <time class="post-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+    </a>
+  </article>
+  {{ end }}
+</section>
+{{ end }}

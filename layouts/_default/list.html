@@ -1,0 +1,15 @@
+{{/* ABOUTME: Section list template — used for /posts/ and other section pages */}}
+{{/* ABOUTME: Same title-and-date format as the homepage */}}
+
+{{ define "main" }}
+<section class="post-list">
+  {{ range .Pages.ByDate.Reverse }}
+  <article class="post-entry">
+    <a href="{{ .Permalink }}">
+      <span class="post-title">{{ .Title }}</span>
+      <time class="post-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+    </a>
+  </article>
+  {{ end }}
+</section>
+{{ end }}
