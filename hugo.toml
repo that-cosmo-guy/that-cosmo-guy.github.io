@@ -4,6 +4,7 @@
 baseURL = 'https://that-cosmo-guy.github.io/'
 languageCode = 'en-us'
 title = "Cosmo"
+buildFuture = true
 
 [pagination]
   pagerSize = 100
