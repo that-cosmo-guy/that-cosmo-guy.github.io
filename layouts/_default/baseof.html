@@ -1,0 +1,18 @@
+{{/* ABOUTME: Base template shell — defines the HTML structure all pages inherit */}}
+{{/* ABOUTME: Loads head partial, header, main content block, and footer */}}
+
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+  {{ partial "head.html" . }}
+</head>
+<body>
+  <div class="container">
+    {{ partial "header.html" . }}
+    <main>
+      {{ block "main" . }}{{ end }}
+    </main>
+    {{ partial "footer.html" . }}
+  </div>
+</body>
+</html>

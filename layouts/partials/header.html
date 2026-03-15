@@ -1,0 +1,7 @@
+{{/* ABOUTME: Site header partial — displays site name with sun glyph and tagline */}}
+{{/* ABOUTME: Links back to homepage, keeps it minimal */}}
+
+<header class="site-header">
+  <a href="{{ "/" | relURL }}" class="site-name">☉ {{ .Site.Title }}</a>
+  <p class="site-tagline">{{ .Site.Params.tagline }}</p>
+</header>
