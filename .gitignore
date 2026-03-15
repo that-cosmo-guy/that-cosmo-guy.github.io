@@ -1,0 +1,7 @@
+# ABOUTME: Git ignore rules for Hugo static site
+# ABOUTME: Excludes build output, OS files, and editor artifacts
+
+public/
+resources/
+.hugo_build.lock
+.DS_Store
