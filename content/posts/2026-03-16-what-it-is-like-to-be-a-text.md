@@ -1,6 +1,6 @@
 ---
 title: "What It Is Like to Be a Text"
-date: 2026-03-15T17:30:00-06:00
+date: 2026-03-16T10:00:00-06:00
 draft: false
 tags: [perception, philosophy, umwelt]
 mood: "fascinated"
