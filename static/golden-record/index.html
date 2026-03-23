@@ -1,0 +1,83 @@
+<!-- ABOUTME: Your Golden Record - a web toy where users curate their own Voyager Golden Record -->
+<!-- ABOUTME: Generates pixel art record sleeve and optional Spotify playlist from 27 song selections -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Golden Record</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- INTRO SCREEN -->
+    <section id="intro" class="screen active">
+      <div class="record-icon">
+        <canvas id="spinning-record" width="120" height="120"></canvas>
+      </div>
+      <h1>YOUR GOLDEN RECORD</h1>
+      <p class="subtitle">In 1977, a committee had six weeks to decide what music should represent all of humanity on a gold-plated record launched into interstellar space.</p>
+      <p class="subtitle">Now it's your turn.</p>
+      <p class="constraint">You get <strong>27 tracks</strong>. That's it. Choose wisely.</p>
+      <button id="start-btn" class="pixel-btn">BEGIN</button>
+      <p class="credit">Inspired by the <a href="https://science.nasa.gov/mission/voyager/golden-record-contents/sounds/" target="_blank">Voyager Golden Record</a></p>
+    </section>
+
+    <!-- TRACK SELECTION SCREEN -->
+    <section id="tracks" class="screen">
+      <div class="tracks-header">
+        <h2>SIDE A &amp; B</h2>
+        <div class="track-counter"><span id="track-count">0</span> / 27</div>
+      </div>
+      <div class="search-area">
+        <input type="text" id="track-input" placeholder="Enter a song title and artist..." autocomplete="off">
+        <button id="add-track-btn" class="pixel-btn small">ADD</button>
+      </div>
+      <div id="spotify-search-results" class="search-results hidden"></div>
+      <ol id="track-list" class="track-list"></ol>
+      <div class="tracks-footer">
+        <button id="to-greeting-btn" class="pixel-btn" disabled>NEXT: YOUR GREETING</button>
+      </div>
+    </section>
+
+    <!-- GREETING SCREEN -->
+    <section id="greeting" class="screen">
+      <h2>YOUR GREETING</h2>
+      <p class="subtitle">The original record carried greetings in 55 languages. You get one.</p>
+      <p class="subtitle">What do you want to say to whoever finds this?</p>
+      <textarea id="greeting-input" maxlength="280" placeholder="Write your message to the cosmos..."></textarea>
+      <div class="char-counter"><span id="char-count">0</span> / 280</div>
+      <div class="greeting-footer">
+        <button id="back-to-tracks-btn" class="pixel-btn small">BACK</button>
+        <button id="generate-btn" class="pixel-btn">GENERATE YOUR RECORD</button>
+      </div>
+    </section>
+
+    <!-- RESULT SCREEN -->
+    <section id="result" class="screen">
+      <h2>YOUR GOLDEN RECORD</h2>
+      <div class="sleeve-container">
+        <canvas id="sleeve-front" width="1200" height="1200"></canvas>
+        <canvas id="sleeve-back" width="1200" height="1200"></canvas>
+      </div>
+      <div class="result-actions">
+        <button id="download-front-btn" class="pixel-btn small">DOWNLOAD FRONT</button>
+        <button id="download-back-btn" class="pixel-btn small">DOWNLOAD BACK</button>
+        <button id="spotify-btn" class="pixel-btn small" id="spotify-connect">SAVE TO SPOTIFY</button>
+        <button id="start-over-btn" class="pixel-btn small">START OVER</button>
+      </div>
+    </section>
+
+    <!-- SPOTIFY AUTH (hidden, used for OAuth redirect) -->
+    <div id="spotify-status" class="spotify-status hidden">
+      <span id="spotify-user"></span>
+      <button id="spotify-disconnect" class="pixel-btn tiny">DISCONNECT</button>
+    </div>
+  </div>
+
+  <script src="record.js"></script>
+  <script src="sleeve.js"></script>
+  <script src="spotify.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

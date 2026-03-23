@@ -1,0 +1,438 @@
+/* ABOUTME: Styles for Your Golden Record web toy */
+/* ABOUTME: Pixel art aesthetic with retro typography and dark space theme */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --gold: #c9a84c;
+  --gold-light: #e8d48b;
+  --gold-dark: #8a6d2b;
+  --space-black: #0a0a0f;
+  --space-deep: #12121f;
+  --star-white: #e8e8f0;
+  --groove-dark: #1a1a2e;
+  --text-dim: #6a6a8a;
+  --accent-blue: #4a6fa5;
+  --error-red: #a54a4a;
+}
+
+body {
+  background: var(--space-black);
+  color: var(--star-white);
+  font-family: 'Press Start 2P', monospace;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+#app {
+  width: 100%;
+  max-width: 700px;
+  padding: 2rem 1rem;
+}
+
+/* Screens */
+.screen {
+  display: none;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.screen.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Typography */
+h1 {
+  font-size: 1.5rem;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  letter-spacing: 4px;
+  text-shadow: 0 0 20px rgba(201, 168, 76, 0.3);
+}
+
+h2 {
+  font-size: 1rem;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  font-size: 0.6rem;
+  line-height: 1.8;
+  text-align: center;
+  color: var(--text-dim);
+  margin-bottom: 1rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.constraint {
+  font-size: 0.7rem;
+  text-align: center;
+  color: var(--gold-light);
+  margin: 1.5rem 0;
+}
+
+.constraint strong {
+  color: var(--gold);
+  font-size: 0.8rem;
+}
+
+.credit {
+  font-size: 0.45rem;
+  text-align: center;
+  color: var(--text-dim);
+  margin-top: 2rem;
+}
+
+.credit a {
+  color: var(--accent-blue);
+  text-decoration: none;
+}
+
+.credit a:hover {
+  text-decoration: underline;
+}
+
+/* Record icon */
+.record-icon {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+#spinning-record {
+  image-rendering: pixelated;
+}
+
+/* Buttons */
+.pixel-btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.65rem;
+  background: var(--gold-dark);
+  color: var(--star-white);
+  border: 2px solid var(--gold);
+  padding: 12px 24px;
+  cursor: pointer;
+  display: block;
+  margin: 1rem auto;
+  transition: all 0.1s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.pixel-btn:hover {
+  background: var(--gold);
+  color: var(--space-black);
+  box-shadow: 0 0 16px rgba(201, 168, 76, 0.4);
+}
+
+.pixel-btn:active {
+  transform: translateY(2px);
+}
+
+.pixel-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.pixel-btn:disabled:hover {
+  background: var(--gold-dark);
+  color: var(--star-white);
+  box-shadow: none;
+}
+
+.pixel-btn.small {
+  font-size: 0.5rem;
+  padding: 8px 16px;
+  display: inline-block;
+}
+
+.pixel-btn.tiny {
+  font-size: 0.4rem;
+  padding: 4px 8px;
+  display: inline-block;
+}
+
+/* Track selection */
+.tracks-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding: 0 0.5rem;
+}
+
+.track-counter {
+  font-size: 0.8rem;
+  color: var(--gold);
+}
+
+.search-area {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0 0.5rem;
+}
+
+#track-input {
+  flex: 1;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.5rem;
+  background: var(--groove-dark);
+  color: var(--star-white);
+  border: 2px solid var(--gold-dark);
+  padding: 10px 12px;
+  outline: none;
+}
+
+#track-input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 8px rgba(201, 168, 76, 0.2);
+}
+
+#track-input::placeholder {
+  color: var(--text-dim);
+}
+
+/* Search results dropdown */
+.search-results {
+  background: var(--groove-dark);
+  border: 2px solid var(--gold-dark);
+  margin: 0 0.5rem 1rem;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.search-results.hidden {
+  display: none;
+}
+
+.search-result-item {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.45rem;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--space-deep);
+  line-height: 1.6;
+}
+
+.search-result-item:hover {
+  background: var(--gold-dark);
+}
+
+.search-result-item .artist {
+  color: var(--text-dim);
+}
+
+/* Track list */
+.track-list {
+  list-style: none;
+  counter-reset: track;
+  padding: 0 0.5rem;
+  margin-bottom: 1.5rem;
+  min-height: 100px;
+}
+
+.track-list li {
+  counter-increment: track;
+  display: flex;
+  align-items: center;
+  padding: 6px 8px;
+  font-size: 0.45rem;
+  line-height: 1.6;
+  border-bottom: 1px solid var(--groove-dark);
+  animation: slideIn 0.2s ease-out;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.track-list li::before {
+  content: counter(track, decimal-leading-zero);
+  color: var(--gold-dark);
+  margin-right: 12px;
+  font-size: 0.4rem;
+  min-width: 20px;
+}
+
+.track-list li .track-info {
+  flex: 1;
+}
+
+.track-list li .track-title {
+  color: var(--star-white);
+}
+
+.track-list li .track-artist {
+  color: var(--text-dim);
+  font-size: 0.4rem;
+}
+
+.track-list li .remove-track {
+  color: var(--error-red);
+  cursor: pointer;
+  font-size: 0.5rem;
+  padding: 4px 8px;
+  opacity: 0.5;
+}
+
+.track-list li .remove-track:hover {
+  opacity: 1;
+}
+
+.tracks-footer {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+/* Greeting screen */
+#greeting-input {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.5rem;
+  line-height: 2;
+  width: 100%;
+  min-height: 120px;
+  background: var(--groove-dark);
+  color: var(--star-white);
+  border: 2px solid var(--gold-dark);
+  padding: 12px;
+  resize: vertical;
+  outline: none;
+}
+
+#greeting-input:focus {
+  border-color: var(--gold);
+}
+
+#greeting-input::placeholder {
+  color: var(--text-dim);
+}
+
+.char-counter {
+  font-size: 0.4rem;
+  color: var(--text-dim);
+  text-align: right;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.greeting-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+/* Result screen */
+.sleeve-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+.sleeve-container canvas {
+  image-rendering: pixelated;
+  width: 500px;
+  max-width: 100%;
+  height: auto;
+  border: 2px solid var(--gold-dark);
+  box-shadow: 0 0 30px rgba(201, 168, 76, 0.15);
+}
+
+.result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+/* Spotify status bar */
+.spotify-status {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--groove-dark);
+  padding: 6px 16px;
+  font-size: 0.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--gold-dark);
+  z-index: 100;
+}
+
+.spotify-status.hidden {
+  display: none;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--space-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold-dark);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
+
+/* Empty state */
+.track-list:empty::after {
+  content: 'Your record is empty. Add some tracks.';
+  display: block;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.45rem;
+  padding: 2rem;
+  line-height: 2;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  h1 {
+    font-size: 1rem;
+    letter-spacing: 2px;
+  }
+
+  .search-area {
+    flex-direction: column;
+  }
+
+  .pixel-btn.small {
+    font-size: 0.45rem;
+    padding: 6px 12px;
+  }
+
+  .sleeve-container canvas {
+    max-width: 300px;
+  }
+}
